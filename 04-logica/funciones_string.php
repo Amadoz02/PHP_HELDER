@@ -26,11 +26,11 @@
 // echo "<pre>";
 
 
-$text= "LeEEeR022%m";
+$text= "Aa1#Bb2%";
 // $exp = "/gruPO-[0-9]-ADso/i";
 // $exp = "/le{1,4}r/i";
 // $exp = "/le[aeiou]{1,5}r/i";
-$exp = "/^((([A-Z].*){4,})+((*.[0-9].*){2,})+(*.[\W]{1,}.*))${10,}/";
+$exp = "/((?=.*[A-Z]){2,}(?=.*[a-z]){1,}(?=.*[0-9]){2,}(?=.*\W){2,})(?=.*.){8,}/";
 
 
 
@@ -42,9 +42,9 @@ echo "<br>";
 echo 3<$resul;
 echo "<br>";
 if ($resul){
-    print("si tiene 4 o  mas mayusculas");
+    print("si se valida la password");
 }else{
 
-    print("no hay suficiente cantidad de mayuzculas");
+    print("no hay suficiente seguridad");
 }
 echo "<pre>";
