@@ -32,7 +32,7 @@
     </div>
     <div>
       <label for="telefono">Ingrese el teléfono: </label>
-      <input type="text" name="telefono" id="telefono">
+      <input type="number" name="telefono" id="telefono">
     </div>
     <div>
       <label for="html" class="lenguaje">HTML: </label>
