@@ -5,7 +5,7 @@ class Conexion
     private $host = 'localhost';
     private $user = 'helder_2894667';
     private $contrasena = '#Aprendiz2024';
-    private $db = 'helder_adso';
+    private $db = 'adso_2894667';
     public function __construct()
     {
         try{
@@ -15,10 +15,10 @@ class Conexion
             ];
             $this->conexion = 'mysql:host='. $this -> host. ';dbname='.$this -> db . ';charset=utf8mb4';
             $this->conexion=new PDO($this->conexion, $this->user , $this->contrasena ,$opciones);
-            $this ->conexion->exec('uft8');
+            $this ->conexion->exec('SET CHARACTER SET utf8');
     
         }catch (Exception $e){
-            echo $e->getMessage();
+            
         }
     }
     

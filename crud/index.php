@@ -28,39 +28,84 @@ $lenguaje= $banderal->fetchAll();
 
 <style>
 
-    *{
-        margin-bottom: 10px;
-    }
-    select{
-        width: fit-content;
-    }
-    .lenguaje{
-      display: inline-block;
-    }
-    fieldset{
-        background-color: rgba(217, 240, 240, 0.637);
-    }
-    .contenedor{
-        display: flex;
-        flex-direction: column;
-    }
-    .generos{
-        display: flex;
-        flex-direction: column;
-        margin: 10px 20px;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 10px;
-        background-color: rgb(195, 168, 240);
-        justify-content: space-between;
-        padding: 10px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
 
-    }
-  </style>
+fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: calc(100% - 12px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.generos, .lenguajes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genero_contenedor {
+    display: flex;
+    align-items: center;
+}
+
+.genero_contenedor label {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.botoncito{
+    display: flex;
+    width: 100px;
+    height: fit-content;
+    padding: 10px;
+    background-color: #c4cce0;
+    border: 1px solid #8292f0;
+    border-radius: 10px;
+}
+</style>
 </head> 
 <body>
-  <fieldset>
-      <form action="envio.php" method="post">
+    <fieldset>
+        <form action="envio.php" method="post">
             <div>
             <label for="nombre">Ingrese el nombre: </label>
             <input type="text" name="nombre" id="nombre">
@@ -121,10 +166,13 @@ $lenguaje= $banderal->fetchAll();
                     <?php
                     foreach ($lenguaje as $key => $value) {
                     ?>
+                    <div class="botoncito">
+
                         <label for="<?= $value['id_leng'] ?>" class="genero"> 
                             <?= $value['nom_lenguaje']?>
                         </label>
                         <input type="checkbox" id="<?= $value['id_leng'] ?>" value="<?= $value['id_leng']; ?>" name="id_leng[]">
+                    </div>
                     <?php
                         }
                     ?>
@@ -132,9 +180,10 @@ $lenguaje= $banderal->fetchAll();
             </div>
 
             <button type="submit">Enviar</button>
-      </form>
-  </fieldset>
+        </form>
+        <button >
+            <a href="ver_usuarios.php">Editar Data Base</a>
+        </button>
+    </fieldset>
 </body>
-<?php
-echo "<pre>";
-print_r ($generos);
+

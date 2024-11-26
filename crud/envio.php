@@ -35,10 +35,11 @@ foreach ($id_leng as $key => $value){
     $stm->bindParam(':fk_id_leng', $value);
     $stm->bindParam(':fk_id_user', $id_user);
     $stm->execute();
-
-
 }
 
 ?>
 <h1>envio realizado con exito</h1>
 <?php
+header("Location: ver_usuarios.php");
+
+?>
