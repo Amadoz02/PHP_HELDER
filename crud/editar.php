@@ -6,23 +6,40 @@ $conexion = $db->getConexion();
 
 $id = $_GET['id'];
 
+
 $sql = "SELECT * FROM USUARIOS WHERE id_user = :id";
 $stm = $conexion->prepare($sql);
 $stm->bindParam(':id', $id);
 $stm->execute();
-$usuario = $stm->fetch(PDO::FETCH_ASSOC);
+$usuario = $stm->fetch();
+
+
+$sqlLenguajesUsuario = "SELECT fk_id_leng FROM lenguajes_usuarios WHERE fk_id_user = :id";
+$stm = $conexion->prepare($sqlLenguajesUsuario);
+$stm->bindParam(':id', $id);
+$stm->execute();
+$lenguajesUsuario = $stm->fetchAll(PDO::FETCH_COLUMN, 0);
+
 
 $sqlGenero = "SELECT * FROM GENEROS";
 $banderag = $conexion->prepare($sqlGenero);
 $banderag->execute();
 $generos = $banderag->fetchAll();
 
+
 $sqlCiudad = "SELECT * FROM CIUDADES";
 $banderac = $conexion->prepare($sqlCiudad);
 $banderac->execute();
 $ciudades = $banderac->fetchAll();
-?>
 
+
+$sqllenguaje = "SELECT * FROM LENGUAJES";
+$banderal = $conexion->prepare($sqllenguaje);
+$banderal->execute();
+$lenguajes = $banderal->fetchAll();
+
+
+?>
 <form action="actualizar.php" method="post">
     <input type="hidden" name="id_user" value="<?= $usuario['id_user'] ?>">
     <div>
@@ -61,5 +78,23 @@ $ciudades = $banderac->fetchAll();
             <?php } ?>
         </select>
     </div>
+    <div class="contenedor">
+        <p>TUS LENGUAJES</p>
+        <div class="lenguajes">
+            <?php
+            foreach ($lenguajes as $value) {
+            ?>
+            <div class="botoncito">
+                <label for="<?= $value['id_leng'] ?>" class="genero"> 
+                    <?= $value['nom_lenguaje'] ?>
+                </label>
+                <input type="checkbox" id="<?= $value['id_leng'] ?>" value="<?= $value['id_leng'] ?>" name="id_leng[]" <?= in_array($value['id_leng'], $lenguajesUsuario) ? 'checked' : '' ?>>
+            </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
     <button type="submit">Actualizar</button>
 </form>
+<?php
