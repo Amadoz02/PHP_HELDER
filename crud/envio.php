@@ -12,7 +12,7 @@ $fk_id_ciudad = $_POST['fk_id_ciudad'];
 $id_leng = $_POST['id_leng'];
 
 try {
-    $exp = '/^[a-zA-Z_]+$/';
+    $exp = '/^[a-zA-Z_\s]+$/';
     $validar_nom= preg_match($exp, $nombre, $coincidencia,PREG_OFFSET_CAPTURE);
     $validar_apell= preg_match($exp, $apellido, $coincidencia,PREG_OFFSET_CAPTURE);
 

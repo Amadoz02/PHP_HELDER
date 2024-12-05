@@ -40,6 +40,79 @@ $lenguajes = $banderal->fetchAll();
 
 
 ?>
+<style>
+
+form {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: calc(100% - 12px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+div input[type="date"]{
+    width: 230px;
+}
+.generos, .lenguajes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genero_contenedor {
+    display: flex;
+    align-items: center;
+}
+
+.genero_contenedor label {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.botoncito{
+    display: flex;
+    width: 100px;
+    height: fit-content;
+    padding: 10px;
+    background-color: #c4cce0;
+    border: 1px solid #8292f0;
+    border-radius: 10px;
+}
+</style>
 <form action="actualizar.php" method="post">
     <input type="hidden" name="id_user" value="<?= $usuario['id_user'] ?>">
     <div>
